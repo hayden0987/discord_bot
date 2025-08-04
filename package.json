@@ -1,0 +1,26 @@
+{
+  "name": "discord_bot",
+  "version": "1.0.0",
+  "description": "Bot for discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayden0987/discord_bot.git"
+  },
+  "author": "Hayden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hayden0987/discord_bot/issues"
+  },
+  "homepage": "https://github.com/hayden0987/discord_bot#readme",
+  "dependencies": {
+    "discord.js": "^14.21.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0"
+  }
+}
