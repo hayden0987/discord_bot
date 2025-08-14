@@ -5,9 +5,9 @@ const { env } = require('node:process');
 
 // Retrive token
 require('dotenv').config();
-const token = process.env.DISCORD_TOKEN; 
+const token = process.env.DISCORD_TOKEN;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds]});
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Load commands
 client.commands = new Collection();
