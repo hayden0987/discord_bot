@@ -1,11 +1,13 @@
 const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 
 module.exports = {
-	cooldown: 5,
+	// Slash command definition
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
-	async execute(interaction) {
-		await interaction.reply({ content: 'Pong!', flags: MessageFlags.Ephemeral });
+	cooldown: 5,
+
+	async execute(context) {
+		await context.reply({ content: 'Pong!', flags: MessageFlags.Ephemeral });
 	},
 };

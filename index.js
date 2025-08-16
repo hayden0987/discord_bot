@@ -2,11 +2,19 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 
-// Retrive token
+// Retrieve token
 require('dotenv').config();
 const token = process.env.DISCORD_TOKEN;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ 
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+	],
+ });
+
+const prefix = "coco!";
 
 // Load commands
 client.commands = new Collection();
@@ -27,7 +35,7 @@ for (const folder of commandFolders) {
 	}
 }
 
-// Collection for cooldowns
+// Collection for command cooldowns
 client.cooldowns = new Collection();
 
 // Load events
@@ -38,9 +46,9 @@ for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	const event = require(filePath);
 	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args));
+		client.once(event.name, (...args) => event.execute(...args, client, prefix));
 	} else {
-		client.on(event.name, (...args) => event.execute(...args));
+		client.on(event.name, (...args) => event.execute(...args, client, prefix));
 	}
 }
 
